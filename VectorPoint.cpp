@@ -46,7 +46,7 @@ double Vector::Distance(const Vector& b) const {
 }
 
 bool Vector::IsInSegment(const Vector& startSeg, const Vector& endSeg) const {
-    //Epsilon умножается на 3 из-за накапливания погрешности
+    //Epsilon СѓРјРЅРѕР¶Р°РµС‚СЃСЏ РЅР° 3 РёР·-Р·Р° РЅР°РєР°РїР»РёРІР°РЅРёСЏ РїРѕРіСЂРµС€РЅРѕСЃС‚Рё
     return fabs(this->Distance(startSeg) + this->Distance(endSeg) - endSeg.Distance(startSeg)) < numeric_limits<double>::epsilon() * 3;
 }
 
