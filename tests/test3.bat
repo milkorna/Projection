@@ -1,0 +1,1 @@
+Projection.exe Nodes3.txt 3 3 3
