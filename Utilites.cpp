@@ -1,28 +1,28 @@
 #include "Utilites.h"
 
-//Получить проекцию точки target на прямую которой принадлежит сегмент ломаной c границами prevNode, node
+//РџРѕР»СѓС‡РёС‚СЊ РїСЂРѕРµРєС†РёСЋ С‚РѕС‡РєРё target РЅР° РїСЂСЏРјСѓСЋ РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ СЃРµРіРјРµРЅС‚ Р»РѕРјР°РЅРѕР№ c РіСЂР°РЅРёС†Р°РјРё prevNode, node
 Vector GetProjection(Vector& prevNode, Vector& node, Vector& target) {
-    //Направляющий вектор прямой которой принадлежит сегмент
+    //РќР°РїСЂР°РІР»СЏСЋС‰РёР№ РІРµРєС‚РѕСЂ РїСЂСЏРјРѕР№ РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ СЃРµРіРјРµРЅС‚
     Vector a = prevNode - node;
-    //Длина направляющего вектора
+    //Р”Р»РёРЅР° РЅР°РїСЂР°РІР»СЏСЋС‰РµРіРѕ РІРµРєС‚РѕСЂР°
     double aLength = a * a;
-    //Точка проекции 
+    //РўРѕС‡РєР° РїСЂРѕРµРєС†РёРё 
     Vector projection = a * ((prevNode - target) * a / aLength);
     return prevNode - projection;
 }
 
-//Получить целевую точку
+//РџРѕР»СѓС‡РёС‚СЊ С†РµР»РµРІСѓСЋ С‚РѕС‡РєСѓ
 Vector ParseTarget(char* x, char* y, char* z) {
     Vector target(atof(x), atof(y), atof(z));
     return target;
 }
 
-//Компаратор сравнивающий расстояния точек до целевой
+//РљРѕРјРїР°СЂР°С‚РѕСЂ СЃСЂР°РІРЅРёРІР°СЋС‰РёР№ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ С‚РѕС‡РµРє РґРѕ С†РµР»РµРІРѕР№
 bool comp(pair<Vector, unsigned int>& a, pair<Vector, unsigned int>& b) {
     return a.first.Distance(target) < b.first.Distance(target);
 }
 
-//Поиск точек проекции и наиболее близкого узла
+//РџРѕРёСЃРє С‚РѕС‡РµРє РїСЂРѕРµРєС†РёРё Рё РЅР°РёР±РѕР»РµРµ Р±Р»РёР·РєРѕРіРѕ СѓР·Р»Р°
 void FindProjections(ifstream& input, vector<pair<Vector, unsigned int>>& projections, Vector& minNode, vector<unsigned int>& minNodeNum) {
     double x, y, z;
 
@@ -62,7 +62,7 @@ void FindProjections(ifstream& input, vector<pair<Vector, unsigned int>>& projec
     sort(projections.begin(), projections.end(), comp);
 }
 
-//Вывод результата
+//Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 void MakeOutput(vector<pair<Vector, unsigned int>>& projections, Vector& minNode, const vector<unsigned int>& minNodeNum) {
     if (!projections.empty()) {
         for (auto& [coord, num] : projections)
