@@ -4,17 +4,17 @@
 #include <algorithm>
 #include <fstream>
 
-//Целевая точка
+//Р¦РµР»РµРІР°СЏ С‚РѕС‡РєР°
 extern Vector target;
 
-//Получить проекцию точки target на прямую которой принадлежит сегмент ломаной c границами prevNode, node
+//РџРѕР»СѓС‡РёС‚СЊ РїСЂРѕРµРєС†РёСЋ С‚РѕС‡РєРё target РЅР° РїСЂСЏРјСѓСЋ РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ СЃРµРіРјРµРЅС‚ Р»РѕРјР°РЅРѕР№ c РіСЂР°РЅРёС†Р°РјРё prevNode, node
 Vector GetProjection(const Vector& prevNode, const Vector& node, const Vector& target);
 
-//Получить целевую точку
+//РџРѕР»СѓС‡РёС‚СЊ С†РµР»РµРІСѓСЋ С‚РѕС‡РєСѓ
 Vector ParseTarget(char* x, char* y, char* z);
 
-//Поиск точек проекции и наиболее близкого узла
+//РџРѕРёСЃРє С‚РѕС‡РµРє РїСЂРѕРµРєС†РёРё Рё РЅР°РёР±РѕР»РµРµ Р±Р»РёР·РєРѕРіРѕ СѓР·Р»Р°
 void FindProjections(ifstream& input, vector<pair<Vector, unsigned int>>& projections, Vector& minNode, vector<unsigned int>& minNodeNum);
 
-//Вывод результата
+//Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 void MakeOutput(vector<pair<Vector, unsigned int>>& projections, Vector& minNode, const vector<unsigned int>& minNodeNum);
